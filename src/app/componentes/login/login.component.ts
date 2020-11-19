@@ -99,6 +99,15 @@ export class LoginComponent implements OnInit {
       case 'admin':
         this.email = 'admin@admin.com';
         break;
+      case 'alumno2':
+        this.email = 'ale@gallo.com';
+        break;
+      case 'profesor2':
+        this.email = 'profe2@profe.com';
+        break;
+      case 'admin2':
+        this.email = 'admin2@admin.com';
+        break;
       }
       this.pass = '123456';
 

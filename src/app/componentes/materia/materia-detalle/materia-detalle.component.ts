@@ -19,6 +19,9 @@ export class MateriaDetalleComponent implements OnInit {
 
 
   ngOnInit(): void {
+    console.log('Materia seleccionada id:' + this.materiaInput.id);
+    console.table(this.materiaInput);
+
     this.inscripcionService.getInscripcionesBySubjectId(this.materiaInput.id).subscribe(result =>{
       this.inscripcionList = result;
     });

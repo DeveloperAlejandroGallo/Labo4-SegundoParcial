@@ -33,8 +33,9 @@ export class InscripcionService {
      return this.filterByUserEmail(resp,email)}));
  }
 
- getInscripcionesBySubjectId(id: string) {
+ public getInscripcionesBySubjectId(id: string) {
       // Antes de devolver la info a la que me suscribo, paso por el map
+      console.log('id recibido en el servicio: '+id);
       return this.http.get(environment.firebase.databaseURL+"/inscripciones.json").pipe(map(resp=>{
         return this.filterBySubjectId(resp,id)}));
  }

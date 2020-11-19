@@ -14,22 +14,22 @@ import { RegistroComponent } from './componentes/registro/registro.component';
 import { AutorizaGuard } from './servicio/autoriza.guard';
 
 const routes: Routes = [
-  // {path: '**', pathMatch: 'full', redirectTo: 'error'},
   {path: '', component: LoginComponent},
   {path: 'login', component: LoginComponent, data: {animation: 'login'}},
   {path: 'registro', component: RegistroComponent, data: {animation: 'registro'}},
   {path: 'error', component: ErrorComponent},
   {path: 'home', component: HomeComponent, 
-    canActivate: [AutorizaGuard], 
-    data: {animation: 'home'}},
+  canActivate: [AutorizaGuard], 
+  data: {animation: 'home'}},
   {path: 'admin', component: AdminMenuComponent, canActivate: [AutorizaGuard]},
   {path: 'materia/alta', component: MateriaAltaComponent, canActivate: [AutorizaGuard]},
   {path: 'materia/listado', component: MateriaListadoComponent, canActivate: [AutorizaGuard]},
   {path: 'usuario/listado', component: UsuariosListadoComponent},
   {path: 'alumno/inscripcion', component: AlumnoInscipcionComponent},
   {path: 'alumno/inscripcion/listado', component: AlumnoInscipcionListadoComponent},
-  {path: 'profesor/materias/listado', component: ProfesorMateriasListadoComponent}
-
+  {path: 'profesor/materias/listado', component: ProfesorMateriasListadoComponent},
+  {path: '**', pathMatch: 'full', redirectTo: 'error'}
+  
 ];
 
 @NgModule({
