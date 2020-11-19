@@ -1,0 +1,33 @@
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img [src]="materiaInput.foto" class="card-img" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{materiaInput.nombre}}</h5>
+          <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Alumnos Inscriptos</h5>
+                <table class="table table-sm table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Foto</th>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let ins of inscripcionList">
+                            <img height=50px width=50px [src]="ins.alumno.foto" alt="">
+                            <td>{{ins.alumno.apellido +', '+ ins.alumno.nombre}}</td>
+                            <td>{{ins.alumno.email}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

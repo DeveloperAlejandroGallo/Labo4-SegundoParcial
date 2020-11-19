@@ -6,6 +6,7 @@ export class Materia {
     cupos: number;
     profesor: Usuario;
     foto: string;
+    id?: string;
 
 
     constructor(nombre: string, cuatrimestre: number, cupos: number, profesor: Usuario, foto: string) {

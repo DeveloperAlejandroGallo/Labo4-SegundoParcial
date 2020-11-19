@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { map } from 'rxjs/operators';
+import { elementAt, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Inscripcion } from '../clase/inscripcion';
 
@@ -33,6 +33,16 @@ export class InscripcionService {
      return this.filterByUserEmail(resp,email)}));
  }
 
+ getInscripcionesBySubjectId(id: string) {
+      // Antes de devolver la info a la que me suscribo, paso por el map
+      return this.http.get(environment.firebase.databaseURL+"/inscripciones.json").pipe(map(resp=>{
+        return this.filterBySubjectId(resp,id)}));
+ }
+
+ changeStudentGrade(id:string,grade:number){
+  return this.http.patch(environment.firebase.databaseURL+"/materias/"+id+".json",{nota:grade}).subscribe(resp=>{
+  });    
+}
 
 
 public filterByEmail(res: any, email: string) {
@@ -73,15 +83,13 @@ public filterByUserEmail(res: any, email: string) {
    }
    return aux;  
 }
-public filterBySpeciality(res: any, spec: string) {
- console.log('filterBySpeciality:' + spec);
- let Inscripciones;
+public filterBySubjectId(res: any, id: string) {
+ let inscripciones;
  let aux=[];
- Inscripciones=this.objecToArray(res);
-   for (let index = 0; index < Inscripciones.length; index++) {
-     const element = Inscripciones[index];
-     console.log('element '+index+ ':' +element);      
-     if (element.speciality == spec) {
+ inscripciones=this.objecToArray(res);
+   for (let index = 0; index < inscripciones.length; index++) {
+     const element = inscripciones[index];
+        if (element.materia.id == id && element.alumno.activo == true) {
        aux.push(element);
      }
    }

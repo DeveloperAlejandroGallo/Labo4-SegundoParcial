@@ -47,20 +47,20 @@ export class MateriasService {
 //      return this.filterById(resp,id)}));
 //  }
 
-//  changeUserState(id:string,state:boolean){
-//    return this.http.patch(environment.firebase.databaseURL+"/materias/"+id+".json",{estado:state}).subscribe(resp=>{
-//    });    
-//  }
+ cambiarCupoMateria(id:string,cupos:number){
+   return this.http.patch(environment.firebase.databaseURL+"/materias/"+id+".json",{cupos:cupos}).subscribe(resp=>{
+   });    
+ }
 
 
 public filterByEmail(res: any, email: string) {
  let materias;
- let aux=null;
+ let aux=[];
  materias=this.objecToArray(res);
    for (let index = 0; index < materias.length; index++) {
      const element = materias[index];
-     if (element.usuario.email == email) {
-       aux = element;
+     if (element.profesor.email == email) {
+       aux.push(element);
      }
    }
    return aux;

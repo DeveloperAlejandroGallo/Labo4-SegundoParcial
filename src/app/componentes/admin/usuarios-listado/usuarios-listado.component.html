@@ -14,6 +14,7 @@
                 <option value="Alumno">Alumno</option>
                 <option value="Profesor">Profesor</option>
                 <option value="Administrador">Administrador</option>
+                <option value="Borrados">Alumnos Borrados</option>
             </select>
         </div>
         <table class="table table-sm table-bordered">
@@ -23,6 +24,8 @@
                     <th>Nombre</th>
                     <th>Email</th>
                     <th>Perfil</th>
+                    <th *ngIf="perfil=='Borrados'">Fecha Baja</th>
+                    <th>Accion</th>
                 </tr>
             </thead>
             <tbody>
@@ -31,7 +34,12 @@
                     <td>{{usr.apellido +', '+ usr.nombre}}</td>
                     <td>{{usr.email}}</td>
                     <td>{{usr.perfil}}</td>
-                    <!-- <td><button type="button" class="button btn-info" name="" id="" (click)="clickSelectProfesor(prof)">Elegir</button></td> -->
+                    <td *ngIf="perfil=='Borrados'">{{usr.fechaBaja}}</td>
+                    <td *ngIf="usr.perfil=='Alumno'">
+                        <button type="button" class="button btn-danger" name="" id="" (click)="baja(usr)">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true">Baja</span>
+                        </button>
+                    </td> 
                 </tr>
             </tbody>
         </table>

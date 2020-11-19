@@ -1,0 +1,16 @@
+<app-nav-bar (usrActivoOutput)="recibirUsuario($event)"></app-nav-bar>
+
+<div *ngIf="!materiaSeleccionada">
+    <app-materia-listado (materiaOutput)="recibirMateria($event)" [flagMostraraBotonInput]="true" [usuarioInput]="usuarioActual"></app-materia-listado>
+</div>
+<div *ngIf="materiaSeleccionada">
+    <div class="card">
+        <div class="card-text-center">
+            <div class="card-body">
+                <app-materia-detalle [materiaInput]="materiaSeleccionada"></app-materia-detalle>
+                <hr>
+                <button type="button" class="btn btn-info" (click)="cambiarMateria()">Cambiar</button>
+            </div>
+        </div>
+    </div>
+</div>

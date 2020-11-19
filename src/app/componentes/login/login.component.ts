@@ -32,8 +32,8 @@ export class LoginComponent implements OnInit {
     // this.email = (document.getElementById('txtUsuario') as HTMLInputElement).value;
     // this.pass = (document.getElementById('txtpass') as HTMLInputElement).value;
 
-    console.log(this.email );
-    console.log(this.pass );
+    // console.log(this.email );
+    // console.log(this.pass );
 
     if (this.pass !== '' && this.pass !== undefined) {
       this.autenticador
@@ -42,8 +42,8 @@ export class LoginComponent implements OnInit {
           this.autenticador.estaLogueado = true;
           this.usuarioService.getUsersByEmail(this.email).subscribe(resp => {
             this.autenticador.usuarioActual = resp
-            console.log('usr en servicio: '+ this.autenticador.usuarioActual.email);
-            console.log('usr en servicio: '+ this.autenticador.usuarioActual.foto);
+            // console.log('usr en servicio: '+ this.autenticador.usuarioActual.email);
+            // console.log('usr en servicio: '+ this.autenticador.usuarioActual.foto);
           });
           // Swal.fire({
           //   title: 'Éxito',

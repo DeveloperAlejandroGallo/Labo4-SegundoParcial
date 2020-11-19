@@ -9,6 +9,7 @@ import { HomeComponent } from './componentes/home/home.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { MateriaAltaComponent } from './componentes/materia/materia-alta/materia-alta.component';
 import { MateriaListadoComponent } from './componentes/materia/materia-listado/materia-listado.component';
+import { ProfesorMateriasListadoComponent } from './componentes/profesor/profesor-materias-listado/profesor-materias-listado.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
 import { AutorizaGuard } from './servicio/autoriza.guard';
 
@@ -24,7 +25,9 @@ const routes: Routes = [
   {path: 'materia/listado', component: MateriaListadoComponent, canActivate: [AutorizaGuard]},
   {path: 'usuario/listado', component: UsuariosListadoComponent},
   {path: 'alumno/inscripcion', component: AlumnoInscipcionComponent},
-  {path: 'alumno/inscripcion/listado', component: AlumnoInscipcionListadoComponent}
+  {path: 'alumno/inscripcion/listado', component: AlumnoInscipcionListadoComponent},
+  {path: 'profesor/materias/listado', component: ProfesorMateriasListadoComponent}
+
 ];
 
 @NgModule({

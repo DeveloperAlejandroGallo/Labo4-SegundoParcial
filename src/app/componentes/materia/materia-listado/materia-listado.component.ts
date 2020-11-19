@@ -17,14 +17,14 @@ export class MateriaListadoComponent implements OnInit {
               private usuarioService: UsuariosService) { }
 
   @Input() flagMostraraBotonInput: boolean; 
-  @Input() alumno: Usuario = undefined;
+  @Input() usuarioInput: Usuario = undefined;
   @Output() materiaOutput: EventEmitter<Materia> = new EventEmitter<Materia>();
 
   materiaList: Array<Materia>;
   mostrarBoton: boolean;
-  usuario: Usuario;
+  profesor: Usuario;
   usuarioActivo;
-
+  usuarioLogueado: Usuario;
 
   ngOnInit(): void {
 
@@ -32,30 +32,42 @@ export class MateriaListadoComponent implements OnInit {
       this.usuarioActivo=resp;
     
       this.usuarioService.getUsersByEmail(this.usuarioActivo.email).subscribe(ret => {
-        this.usuario = ret;
+        this.usuarioLogueado = ret;
+
+        console.table(this.usuarioLogueado);
+        switch(this.usuarioLogueado.perfil){
+          case 'Profesor':
+            this.materiaService.getMateriasByUserEmail(this.usuarioLogueado.email).subscribe(ret =>{
+              this.materiaList = ret;
+            });
+            break;
+          case 'Administrador':
+            this.materiaService.getMaterias().subscribe(ret =>{
+              this.materiaList = ret;
+            });
+            break;
+          case 'Alumno':
+            this.materiaService.getMaterias().subscribe(ret =>{
+              this.materiaList = ret;
+            });
+            break;
+        }
+
       });
   
     });
 
 
-    if(this.alumno !=  undefined  ){
-      this.materiaService.getMateriasByUserEmail(this.alumno.email).subscribe(ret =>{
-        this.materiaList = ret;
-      });  
-    } else {
-      this.materiaService.getMaterias().subscribe(ret =>{
-        this.materiaList = ret;
-      });
-
-    }
   }
+
 
   public clickSelectMateria(mat: Materia) {
     this.materiaOutput.emit(mat);
   }
 
   // public recibirUsuario(usr: Usuario) {
+  //   console.log('Mat Listado recibir Usr:');
   //   console.table(usr);
-  //   this.usuario = usr;
+  //   this.usuarioInput = usr;
   // }
 }

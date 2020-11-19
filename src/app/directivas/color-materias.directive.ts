@@ -12,7 +12,7 @@ export class ColorMateriasDirective {
 
   ngOnInit() {
 
-    this.element.nativeElement.style.backgroundColor = this.cupos > 20 ? "green" : this.cupos > 10 ? "yellow" : "white";
+    this.element.nativeElement.style.backgroundColor = this.cupos > 20 ? "lightgreen" : this.cupos > 10 ? "yellow" : "white";
  
   }
 }

@@ -28,7 +28,8 @@ export class NavBarComponent implements OnInit {
     
       this.usuarioService.getUsersByEmail(this.usuarioActivo.email).subscribe(ret => {
         this.usuario = ret;
-        console.log('Usr: '+this.usuario);
+        console.log('Usr: ');
+        console.table(this.usuario);
         this.usrActivoOutput.emit(this.usuario);
       });
   

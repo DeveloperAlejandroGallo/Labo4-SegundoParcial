@@ -34,9 +34,14 @@ export class UsuariosService {
       return this.filterByEmail(resp,email)}));
   }
 
-  getUsersByProfile(profile:string){
+  public getUsersByProfile(profile:string){
     return this.http.get(environment.firebase.databaseURL+"/usuarios.json").pipe(map(resp=>{
       return this.filterByProfile(resp,profile)}));
+  }
+  
+  public getUsersErased(){
+    return this.http.get(environment.firebase.databaseURL+"/usuarios.json").pipe(map(resp=>{
+      return this.filterErased(resp)}));
   }
 
   getUsersBySpeciality(spec:string){
@@ -44,13 +49,31 @@ export class UsuariosService {
       return this.filterBySpeciality(resp,spec)}));
   }
 
+  getInactiveUsers(state:boolean){
+    return this.http.get(environment.firebase.databaseURL+"/usuarios.json").pipe(map(resp=>{
+      return this.filterByState(resp,state)}));
+  }
+
+
   getUsuarioById(id:string){
     return this.http.get(environment.firebase.databaseURL+"/usuarios.json").pipe(map(resp=>{
       return this.filterById(resp,id)}));
   }
 
   changeUserState(id:string,state:boolean){
-    return this.http.patch(environment.firebase.databaseURL+"/usuarios/"+id+".json",{estado:state}).subscribe(resp=>{
+    let fechaBaja: string;
+    let diaInfo = new Date();
+    let mesStr: string;
+    let mes = diaInfo.getMonth();
+    mes = mes +1;
+    mesStr = mes.toString();
+
+    if(mes < 10)
+     mesStr = '0' + mes.toString();
+
+
+    fechaBaja = diaInfo.getDate().toString() + '/' + mesStr + '/' + diaInfo.getFullYear().toString();
+    return this.http.patch(environment.firebase.databaseURL+"/usuarios/"+id+".json",{activo:state, fechaBaja:fechaBaja}).subscribe(resp=>{
     });    
   }
 
@@ -67,6 +90,20 @@ public filterByEmail(res: any, email: string) {
     }
     return aux;
 }
+
+public filterByState(res: any, state: boolean) {
+  let usuarios;
+  let aux=null;
+  usuarios=this.objecToArray(res);
+    for (let index = 0; index < usuarios.length; index++) {
+      const element = usuarios[index];
+      if (element.activo == state) {
+        aux = element;
+      }
+    }
+    return aux;
+}
+
 
 public filterById(res: any, id: string) {
   let usuarios;
@@ -88,7 +125,21 @@ public filterByProfile(res: any, profile: string) {
     for (let index = 0; index < usuarios.length; index++) {
       const element = usuarios[index];
       // console.warn(element);
-      if (element.perfil == profile) {
+      if (element.perfil == profile && element.activo == true) {
+        aux.push(element);
+      }
+    }
+    return aux;  
+}
+
+public filterErased(res: any) {
+  let usuarios;
+  let aux=[];
+  usuarios=this.objecToArray(res);
+    for (let index = 0; index < usuarios.length; index++) {
+      const element = usuarios[index];
+      console.table(element);
+      if (element.activo == false) {
         aux.push(element);
       }
     }

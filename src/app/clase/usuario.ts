@@ -6,6 +6,8 @@ export class Usuario {
     perfil: string;
     foto: string;
     activo: boolean;
+    id?: string;
+    fechaBaja?: string;
 
     constructor(nombre: string, apellido: string, email: string, clave: string, perfil: string, foto: string, activo:boolean) {
         this.nombre = nombre;
