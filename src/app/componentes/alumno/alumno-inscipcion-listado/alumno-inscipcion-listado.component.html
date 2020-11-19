@@ -20,7 +20,7 @@
                     <td>{{ins.materia.nombre}}</td>
                     <td>{{ins.materia.profesor.nombre +', '+ ins.materia.profesor.apellido}}</td>
                     <td>{{ins.materia.cuatrimestre}}</td>
-                    <td>{{ins.nota}}</td>
+                    <td>{{ins.nota | notas}}</td>
                 </tr>
             </tbody>
         </table>

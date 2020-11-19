@@ -28,6 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UsuariosListadoComponent } from "./componentes/admin/usuarios-listado/usuarios-listado.component";
 import { AlumnoInscipcionComponent } from "./componentes/alumno/alumno-inscipcion/alumno-inscipcion.component";
 import { AlumnoInscipcionListadoComponent } from './componentes/alumno/alumno-inscipcion-listado/alumno-inscipcion-listado.component';
+import { NotasPipe } from './pipes/notas.pipe';
 
 
 
@@ -49,7 +50,8 @@ import { AlumnoInscipcionListadoComponent } from './componentes/alumno/alumno-in
     SubirImagenComponent,
     UsuariosListadoComponent,
     AlumnoInscipcionComponent,
-    AlumnoInscipcionListadoComponent
+    AlumnoInscipcionListadoComponent,
+    NotasPipe
     ],
   imports: [
     BrowserModule,
