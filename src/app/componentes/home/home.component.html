@@ -1,1 +1,12 @@
-<p>home works!</p>
+<app-nav-bar (usrActivoOutput)="recibirUsuario($event)"></app-nav-bar>
+
+
+<div *ngIf="usuario.perfil == 'Administrador'">
+    <app-admin-menu></app-admin-menu>
+</div>
+<div *ngIf="usuario.perfil == 'Alumno'">
+    <app-alumno-menu></app-alumno-menu>
+</div>
+<div *ngIf="usuario.perfil == 'Profesor'">
+    <app-profesor-menu></app-profesor-menu>
+</div>

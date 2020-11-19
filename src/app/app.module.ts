@@ -1,8 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireDatabaseModule } from "@angular/fire/database";
+import { environment } from 'src/environments/environment';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+
 import { LoginComponent } from './componentes/login/login.component';
 import { HomeComponent } from './componentes/home/home.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
@@ -15,6 +21,15 @@ import { ProfesorListadoComponent } from './componentes/profesor/profesor-listad
 import { AdminMenuComponent } from './componentes/admin/admin-menu/admin-menu.component';
 import { MateriaAltaComponent } from './componentes/materia/materia-alta/materia-alta.component';
 import { MateriaListadoComponent } from './componentes/materia/materia-listado/materia-listado.component';
+import { AutenticarFirebaseService } from './servicio/autenticar-firebase.service';
+import { StorageFirebaseService } from './servicio/storage-firebase.service';
+import { SubirImagenComponent } from './componentes/subir-imagen/subir-imagen.component';
+import { HttpClientModule } from '@angular/common/http';
+import { UsuariosListadoComponent } from "./componentes/admin/usuarios-listado/usuarios-listado.component";
+import { AlumnoInscipcionComponent } from "./componentes/alumno/alumno-inscipcion/alumno-inscipcion.component";
+import { AlumnoInscipcionListadoComponent } from './componentes/alumno/alumno-inscipcion-listado/alumno-inscipcion-listado.component';
+
+
 
 @NgModule({
   declarations: [
@@ -30,13 +45,24 @@ import { MateriaListadoComponent } from './componentes/materia/materia-listado/m
     ProfesorListadoComponent,
     AdminMenuComponent,
     MateriaAltaComponent,
-    MateriaListadoComponent
-  ],
+    MateriaListadoComponent,
+    SubirImagenComponent,
+    UsuariosListadoComponent,
+    AlumnoInscipcionComponent,
+    AlumnoInscipcionListadoComponent
+    ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [AutenticarFirebaseService, StorageFirebaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

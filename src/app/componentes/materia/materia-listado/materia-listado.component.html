@@ -1,1 +1,31 @@
-<p>materia-listado works!</p>
+<div class="card">
+    <div class="card text-center">
+        <div class="card-header">
+            <h5>Materias</h5>
+        </div>
+        <table class="table table-sm table-bordered">
+            <thead>
+                <tr>
+                    <th>Foto</th>
+                    <th>Nombre</th>
+                    <th>Profesor/a</th>
+                    <th>Cuatrimestre</th>
+                    <th>Cupo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let mat of materiaList">
+                    <img height=50px width=50px [src]="mat.foto" alt="">
+                    <td>{{mat.nombre}}</td>
+                    <td>{{mat.profesor.nombre +', '+ mat.profesor.apellido}}</td>
+                    <td>{{mat.cuatrimestre}}</td>
+                    <td>{{mat.cupos}}</td>
+                    <td *ngIf="flagMostraraBotonInput">
+                        <button type="button" class="button btn-info" name="" id="" (click)="clickSelectMateria(mat)">Elegir</button>
+                    </td> 
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

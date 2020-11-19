@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-menu',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminMenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
+
+  public onClickMaterias() {
+    this.router.navigate(['materia/alta']);
+  }
+  public onClickMateriasListado() {
+    this.router.navigate(['materia/listado']);
+  }
+  public onClickUsuariosListado() {
+    this.router.navigate(['usuario/listado']);
+  }
+  
 
 }

@@ -1,1 +1,64 @@
-<p>materia-alta works!</p>
+<app-nav-bar></app-nav-bar>
+<body>
+
+    <div class="card">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src="../../../assets/imagenes/materias.jpg" class="card-img" alt="login">
+        </div>
+        <div class="col-md-8">
+          <div class="card text-center">
+            <div class="card-body">
+              <div class="card-header text-white bg-info">Alta de Materia</div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Nombre</span>
+                </div>
+                <input type="text" class="form-control" [(ngModel)]="nombre" placeholder="Nombre"
+                  aria-label="Nombre" aria-describedby="basic-addon1">
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="cuatri">Cuatrimestre</label>
+                </div>
+                <select class="custom-select" id="cuatri" [(ngModel)]="cuatri">
+                  <option value="1">Primero</option>
+                  <option value="2">Segundo</option>
+                </select>
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="cupos">Cupos</span>
+                </div>
+                <input type="number" class="form-control" [(ngModel)]="cupos" placeholder="Cupos" aria-label="Cupos"
+                  aria-describedby="Cupos">
+              </div>
+              <div class="input-group mb-3" *ngIf="profesor != (undefined && '')">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="profeInput">Profesor</span>
+                </div>
+                <input type="text" class="form-control" [(ngModel)]="profesor.email" placeholder="Profesor"
+                  aria-label="Profesor" aria-describedby="profeInput">
+              </div>
+              <div class="card text-center" *ngIf="profesor == undefined">
+                  <app-profesor-listado (profesorOutput)="recibirProfesor($event)"></app-profesor-listado>
+              </div>
+                <button type="button" class="btn btn-info" (click)="cambiarProfesor()">Cambiar</button>
+              <h5>Imágen</h5>
+              <div class="row">
+                <div class="col-md-6">
+                  <app-subir-imagen (detalleImagenOutput)="imgUpload($event)"></app-subir-imagen>
+                </div>
+              </div>
+              <hr>
+              <div class="mx-auto">
+                <button type="button" class="btn btn-info" (click)="crear()" shape="round"
+                  size="medium">Guardar</button>
+                <button type="button" class="btn btn-info" (click)="volver()" shape="round" size="medium">Volver</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>

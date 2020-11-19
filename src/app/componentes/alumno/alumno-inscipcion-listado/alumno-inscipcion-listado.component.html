@@ -1,0 +1,29 @@
+<app-nav-bar (usrActivoOutput)="recibirAlumno($event)"></app-nav-bar>
+<div class="card">
+    <div class="card text-center">
+        <div class="card-header">
+            <h5>Materias Inscripto</h5>
+        </div>
+        <table class="table table-sm table-bordered">
+            <thead>
+                <tr>
+                    <th>Foto</th>
+                    <th>Nombre</th>
+                    <th>Profesor/a</th>
+                    <th>Cuatrimestre</th>
+                    <th>Nota</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ins of inscripcionesList">
+                    <img height=50px width=50px [src]="ins.materia.foto" alt="">
+                    <td>{{ins.materia.nombre}}</td>
+                    <td>{{ins.materia.profesor.nombre +', '+ ins.materia.profesor.apellido}}</td>
+                    <td>{{ins.materia.cuatrimestre}}</td>
+                    <td>{{ins.nota}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

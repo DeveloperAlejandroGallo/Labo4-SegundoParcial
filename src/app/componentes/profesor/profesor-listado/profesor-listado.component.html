@@ -1,1 +1,17 @@
-<p>profesor-listado works!</p>
+<div class="card">
+    <div class="card text-center">
+        <div class="card-header">
+            <h5>Profesores</h5>
+        </div>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr *ngFor="let prof of profesorList">
+                    <img height=50px width=50px [src]="prof.foto" alt="">
+                    <td>{{prof.apellido +', '+ prof.nombre}}</td>
+                    <td><button type="button" class="button btn-info" name="" id=""
+                            (click)="clickSelectProfesor(prof)">Elegir</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

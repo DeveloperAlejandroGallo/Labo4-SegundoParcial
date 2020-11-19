@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Usuario } from 'src/app/clase/usuario';
+import { UsuariosService } from 'src/app/servicio/usuarios.service';
 
 @Component({
   selector: 'app-profesor-listado',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfesorListadoComponent implements OnInit {
 
-  constructor() { }
+    constructor(private usuarioService: UsuariosService) { }
 
-  ngOnInit(): void {
-  }
+    @Output() profesorOutput: EventEmitter<Usuario> = new EventEmitter<Usuario>();
+    profesorList: Array<Usuario>;
 
+    ngOnInit(): void {
+      this.usuarioService.getUsersByProfile('Profesor').subscribe(ret =>{
+        this.profesorList = ret;
+      });
+    }
+
+    public clickSelectProfesor(profesor) {
+      console.warn(profesor);
+      this.profesorOutput.emit(profesor);
+    }
 }

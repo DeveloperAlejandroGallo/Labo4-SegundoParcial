@@ -1,0 +1,27 @@
+<app-nav-bar (usrActivoOutput)="recibirAlumno($event)"></app-nav-bar>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card text-center">
+                <div class="card-header"><H5>Inscripcion a Materias</H5></div>
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <div *ngIf="!materiaSeleccionada()">
+                        <app-materia-listado (materiaOutput)="recibeMateria($event)" [flagMostraraBotonInput]="true"></app-materia-listado>
+                    </div>
+                    <div *ngIf="materiaSeleccionada()">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="materiaSeleccionada">Materia</span>
+                            </div>
+                            <input type="text" class="form-control" [(ngModel)]="materia.nombre"
+                                placeholder="Materia" aria-label="Materia" aria-describedby="materiaSeleccionada" readonly>
+                        </div>
+                        <button type="button" class="button btn-warning" (click)="btnCambiarMateria()">Cambiar</button>
+                    </div>
+                    <button type="button" class="btn btn-info" (click)="guardar()">Inscribirse</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
