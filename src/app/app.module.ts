@@ -29,6 +29,7 @@ import { UsuariosListadoComponent } from "./componentes/admin/usuarios-listado/u
 import { AlumnoInscipcionComponent } from "./componentes/alumno/alumno-inscipcion/alumno-inscipcion.component";
 import { AlumnoInscipcionListadoComponent } from './componentes/alumno/alumno-inscipcion-listado/alumno-inscipcion-listado.component';
 import { NotasPipe } from './pipes/notas.pipe';
+import { ColorMateriasDirective } from './directivas/color-materias.directive';
 
 
 
@@ -51,7 +52,8 @@ import { NotasPipe } from './pipes/notas.pipe';
     UsuariosListadoComponent,
     AlumnoInscipcionComponent,
     AlumnoInscipcionListadoComponent,
-    NotasPipe
+    NotasPipe,
+    ColorMateriasDirective
     ],
   imports: [
     BrowserModule,

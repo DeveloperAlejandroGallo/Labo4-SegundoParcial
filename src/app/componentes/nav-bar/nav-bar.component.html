@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #addaff;">
-    <a class="navbar-brand" [routerLink]="['/home']">
+    <a class="navbar-brand" [routerLink]="['/home']" *ngIf="usuario">
         <img [src]="usuario.foto" width="40" height="40" class="d-inline-block align-top" alt="Home">
     </a>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <div class="collapse navbar-collapse" id="navbarNavDropdown" *ngIf="usuarioActivo">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item active">
                 <a class="nav-link" [routerLink]="['/home']">{{'Usuario: ' + usuarioActivo.email}}<span class="sr-only">(current)</span></a>

@@ -1,3 +1,6 @@
+<div *ngIf="usuario && usuario.perfil != 'Alumno'" >
+    <app-nav-bar></app-nav-bar>
+</div>
 <div class="card">
     <div class="card text-center">
         <div class="card-header">
@@ -14,9 +17,9 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let mat of materiaList">
+                <tr *ngFor="let mat of materiaList" appColorMaterias [cupos]="mat.cupos" >
                     <img height=50px width=50px [src]="mat.foto" alt="">
-                    <td>{{mat.nombre}}</td>
+                    <td >{{mat.nombre}}</td>
                     <td>{{mat.profesor.nombre +', '+ mat.profesor.apellido}}</td>
                     <td>{{mat.cuatrimestre}}</td>
                     <td>{{mat.cupos}}</td>

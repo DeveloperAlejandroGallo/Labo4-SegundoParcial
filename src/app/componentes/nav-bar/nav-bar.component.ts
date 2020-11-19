@@ -31,8 +31,8 @@ export class NavBarComponent implements OnInit {
         console.log('Usr: '+this.usuario);
         this.usrActivoOutput.emit(this.usuario);
       });
-
-    })
+  
+    });
   }
 
   cerrarSesion(){
