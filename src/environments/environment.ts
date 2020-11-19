@@ -13,7 +13,8 @@ export const environment = {
     messagingSenderId: "31953499921",
     appId: "1:31953499921:web:82f05900d79e09a53fbeb0"
   },
-  urlVerify:"http://localhost:4200/"
+ // urlVerify:"http://localhost:4200/"
+  urlVerify:"https://labo4-segundo-parcial.web.app/"
 };
 
 /*
