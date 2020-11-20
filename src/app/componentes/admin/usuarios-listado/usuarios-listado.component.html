@@ -8,8 +8,8 @@
             <div class="input-group-prepend">
                 <label class="input-group-text" for="userProfile">Tipo de Usuario</label>
             </div>
-            <select class="custom-select" id="userProfile" [(ngModel)]="perfil"
-                (change)="listarUsuariosPorTipo($event.target.value)">
+            <select class="custom-select" id="userProfile" [(ngModel)]="perfil">
+                <!-- (change)="listarUsuariosPorTipo($event.target.value)" -->
                 <option value="Todos" >Todos</option>
                 <option value="Alumno">Alumno</option>
                 <option value="Profesor">Profesor</option>
@@ -29,7 +29,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let usr of usuariosList">
+                <tr *ngFor="let usr of (usuariosList | usuarios:perfil)">
                     <img height=50px width=50px [src]="usr.foto" alt="">
                     <td>{{usr.apellido +', '+ usr.nombre}}</td>
                     <td>{{usr.email}}</td>

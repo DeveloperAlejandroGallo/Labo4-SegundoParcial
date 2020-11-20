@@ -23,28 +23,27 @@ export class UsuariosListadoComponent implements OnInit {
     });
   }
 
-  public listarUsuariosPorTipo(tipo: string){
-    console.info('que viene en el tipo: ' + tipo);
+  // public listarUsuariosPorTipo(tipo: string){
+  //   console.info('que viene en el tipo: ' + tipo);
+  //   switch(tipo){
+  //     case 'Todos':
+  //       this.usuariosService.getUsers().subscribe(ret => {
+  //         this.usuariosList = ret;
+  //       });
+  //     break;
+  //     case 'Alumno': case 'Profesor': case 'Administrador':
+  //       this.usuariosService.getUsersByProfile(tipo).subscribe(ret => {
+  //         this.usuariosList = ret;
+  //       });
+  //       break;
+  //     case 'Borrados':
+  //       this.usuariosService.getUsersErased().subscribe(ret => {
+  //         this.usuariosList = ret;
+  //       });
+  //     break;
+  //   }
 
-    switch(tipo){
-      case 'Todos':
-        this.usuariosService.getUsers().subscribe(ret => {
-          this.usuariosList = ret;
-        });
-      break;
-      case 'Alumno': case 'Profesor': case 'Administrador':
-        this.usuariosService.getUsersByProfile(tipo).subscribe(ret => {
-          this.usuariosList = ret;
-        });
-        break;
-      case 'Borrados':
-        this.usuariosService.getUsersErased().subscribe(ret => {
-          this.usuariosList = ret;
-        });
-      break;
-    }
-
-  }
+  // }
 
 
   public baja(usr: Usuario) {

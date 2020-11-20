@@ -23,6 +23,7 @@ export class MateriaAltaComponent implements OnInit {
   nombre: string;
   cuatri: number = 0;
   cupos: number = 0;
+  anio: number;
   foto: string;
   publicURLFoto: string;
   profesorList: Array<Usuario>;
@@ -73,7 +74,7 @@ export class MateriaAltaComponent implements OnInit {
         refImg.getDownloadURL().subscribe((URL) => {
           console.log("link publico: " + URL);
           this.publicURLFoto = URL;
-          this.materia = new Materia(this.nombre, this.cuatri, this.cupos, this.profesor, this.publicURLFoto);
+          this.materia = new Materia(this.nombre, this.cuatri, this.cupos, this.profesor, this.publicURLFoto, this.anio);
   
             this.materiaService.createMateria(this.materia).subscribe((res: any) => {
               console.log('Materia Creada: ' + this.nombre);
@@ -111,6 +112,14 @@ export class MateriaAltaComponent implements OnInit {
     }
     if(this.cuatri == (0 || undefined)) {
       this.msg = 'Debe completar el cuatrimestre';
+      return false;
+    }
+    if(this.cupos == 0) {
+      this.msg = 'Debe ingresar un cupo';
+      return false;
+    }
+    if(this.anio == 0) {
+      this.msg = 'Debe ingresar un año';
       return false;
     }
     if(this.profesor ==  undefined) {

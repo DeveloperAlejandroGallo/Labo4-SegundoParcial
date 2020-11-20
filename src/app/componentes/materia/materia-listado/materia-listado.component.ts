@@ -19,6 +19,7 @@ export class MateriaListadoComponent implements OnInit {
   @Input() flagMostraraBotonInput: boolean; 
   @Input() usuarioInput: Usuario = undefined;
   @Output() materiaOutput: EventEmitter<Materia> = new EventEmitter<Materia>();
+  @Input() flagMostarnNav: boolean = true;
 
   materiaList: Array<Materia>;
   mostrarBoton: boolean;

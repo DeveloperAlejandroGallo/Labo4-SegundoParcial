@@ -33,6 +33,13 @@
                 <input type="number" class="form-control" [(ngModel)]="cupos" placeholder="Cupos" aria-label="Cupos"
                   aria-describedby="Cupos">
               </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="anio">Año</span>
+                </div>
+                <input type="number" class="form-control" [(ngModel)]="anio" placeholder="Año" aria-label="Año"
+                  aria-describedby="anio">
+              </div>              
               <div class="input-group mb-3" *ngIf="profesor != (undefined && '')">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="profeInput">Profesor</span>

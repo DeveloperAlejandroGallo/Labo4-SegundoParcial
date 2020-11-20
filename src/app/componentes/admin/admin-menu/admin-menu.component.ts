@@ -23,5 +23,9 @@ export class AdminMenuComponent implements OnInit {
     this.router.navigate(['usuario/listado']);
   }
   
+  public onClickInscripciones() {
+    this.router.navigate(['admin/inscripciones']);
+  }
+  
 
 }

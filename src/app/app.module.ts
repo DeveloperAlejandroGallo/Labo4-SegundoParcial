@@ -32,6 +32,8 @@ import { NotasPipe } from './pipes/notas.pipe';
 import { ColorMateriasDirective } from './directivas/color-materias.directive';
 import { MateriaDetalleComponent } from './componentes/materia/materia-detalle/materia-detalle.component';
 import { ProfesorMateriasListadoComponent } from './componentes/profesor/profesor-materias-listado/profesor-materias-listado.component';
+import { UsuariosPipe } from './pipes/usuarios.pipe';
+import { AdminInscripcionesComponent } from './componentes/admin/admin-inscripciones/admin-inscripciones.component';
 
 
 
@@ -57,7 +59,9 @@ import { ProfesorMateriasListadoComponent } from './componentes/profesor/profeso
     NotasPipe,
     ColorMateriasDirective,
     MateriaDetalleComponent,
-    ProfesorMateriasListadoComponent
+    ProfesorMateriasListadoComponent,
+    UsuariosPipe,
+    AdminInscripcionesComponent
     ],
   imports: [
     BrowserModule,

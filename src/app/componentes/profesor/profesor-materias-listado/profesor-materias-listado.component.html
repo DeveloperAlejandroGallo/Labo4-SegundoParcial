@@ -1,7 +1,7 @@
 <app-nav-bar (usrActivoOutput)="recibirUsuario($event)"></app-nav-bar>
 
 <div *ngIf="!materiaSeleccionada">
-    <app-materia-listado (materiaOutput)="recibirMateria($event)" [flagMostraraBotonInput]="true" [usuarioInput]="usuarioActual"></app-materia-listado>
+    <app-materia-listado (materiaOutput)="recibirMateria($event)" [flagMostraraBotonInput]="true" [usuarioInput]="usuarioActual" [flagMostarnNav]="false"></app-materia-listado>
 </div>
 <div *ngIf="materiaSeleccionada">
     <div class="card">

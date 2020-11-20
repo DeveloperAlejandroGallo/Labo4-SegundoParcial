@@ -4,6 +4,7 @@ import { Inscripcion } from 'src/app/clase/inscripcion';
 import { Materia } from 'src/app/clase/materia';
 import { Usuario } from 'src/app/clase/usuario';
 import { InscripcionService } from 'src/app/servicio/inscripcion.service';
+import { MateriasService } from 'src/app/servicio/materias.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -14,7 +15,8 @@ import Swal from 'sweetalert2';
 export class AlumnoInscipcionComponent implements OnInit {
 
   constructor(private router: Router,
-              private inscripcionServicio: InscripcionService) { }
+              private inscripcionServicio: InscripcionService,
+              private materiaService: MateriasService) { }
 
   alumno: Usuario;
   profesor: Usuario;
@@ -50,13 +52,24 @@ export class AlumnoInscipcionComponent implements OnInit {
       // la creo con una nota random para que ya pueda visualizarse.
       let nota = Math.floor((Math.random() * 10) + 1);
       this.inscripcion = new Inscripcion(this.materia, this.alumno, nota);
-      this.inscripcionServicio.createInscripcion(this.inscripcion).subscribe(resp => {
-        Swal.fire({
-          title: 'Éxito',
-          text: 'La Inscripcion fué exitosa.',
-          icon: 'success'
+
+      if(this.materia.cupos > 0)
+      {
+        this.inscripcionServicio.createInscripcion(this.inscripcion).subscribe(resp => {
+          this.materiaService.cambiarCupoMateria(this.materia.id, this.materia.cupos -1);
+          Swal.fire({
+            title: 'Éxito',
+            text: 'La Inscripcion fué exitosa.',
+            icon: 'success'
+          });
+          this.btnCambiarMateria();
         });
-        this.btnCambiarMateria();
-      });
+      } else {
+        Swal.fire({
+          title: 'Error',
+          text: 'No existen mas cupos para la materia',
+          icon: 'error'
+        });
+      }
   }
 }
